@@ -1,0 +1,1 @@
+"Claude, create a file in /Done named 'Victory.md' with the text 'The Autonomous Agent is working!' and then delete this task file."
