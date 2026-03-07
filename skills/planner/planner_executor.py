@@ -1,20 +1,19 @@
+import sys
 import os
 
-INBOX = "../Inbox"
-PLANS = "../Plans"
+# File path Sentinel se pass ho raha hai
+task_file = sys.argv[1]  # <- ye Needs_Action/Test_Planner_Task.md
 
-# Ensure Plans folder exists
-if not os.path.exists(PLANS):
-    os.makedirs(PLANS)
+with open(task_file, "r", encoding="utf-8") as f:
+    content = f.read()
 
-for file in os.listdir(INBOX):
-    if file.endswith(".md"):
-        with open(os.path.join(INBOX, file), 'r', encoding='utf-8') as f:
-            content = f.read()
-        
-        plan_file = os.path.join(PLANS, f"Plan_{file}")
-        with open(plan_file, 'w', encoding='utf-8') as f:
-            f.write(f"# Plan generated for {file}\n\n")
-            f.write("Steps to complete task based on instructions:\n")
-            f.write(content[:300] + "...\n")  # Sample summary
-        print(f"Plan created: {plan_file}")
+# Ab process karo jaise pehle
+print(f"Processing {task_file}...")
+print(content)
+
+# Agar Done folder me move karna hai
+DONE_FOLDER = os.path.join(os.path.dirname(task_file), "../Done")
+os.makedirs(DONE_FOLDER, exist_ok=True)
+done_path = os.path.join(DONE_FOLDER, os.path.basename(task_file))
+os.rename(task_file, done_path)
+print(f"Moved to Done: {done_path}")

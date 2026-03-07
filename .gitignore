@@ -1,0 +1,13 @@
+# runtime folders
+Inbox/
+Needs_Action/
+Done/
+Logs/
+
+# secrets
+credentials.json
+token.json
+
+# temp files
+*.log
+*.tmp

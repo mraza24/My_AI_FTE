@@ -1,7 +1,5 @@
-# AI Employee Dashboard
+# Dashboard
 
-## Pending Tasks
-- Auto-generated from Needs_Action
-
-## Recent Activity
-- Logs updated here
+Total Tasks: 125
+Completed: 8
+Pending: 117
