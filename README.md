@@ -22,7 +22,7 @@ This repository demonstrates the \*\*Bronze Tier\*\* implementation of the AI Em
 
 \- Detect tasks in Markdown format  
 
-\- Route them through the pipeline (`Inbox → Needs\_Action → Done`)  
+\- Route them through the pipeline (Inbox → Needs\_Action → Done)  
 
 \- Invoke Claude via Reporter and Planner skills  
 
@@ -182,93 +182,45 @@ The result is a lightweight \*\*AI employee capable of autonomously processing t
 
 ---
 
+\# Architecture diagram
 
+           +--------------------+
+           |        Inbox       |
+           |   Incoming Tasks   |
+           +---------+----------+
+                     |
+                     v
+             +---------------+
+             |  sentinel.py  |
+             | File Watcher  |
+             +-------+-------+
+                     |
+                     v
+           +--------------------+
+           |    Needs_Action    |
+           |  Tasks to Process  |
+           +---------+----------+
+                     |
+                     v
+           +----------------------+
+           | Claude AI Invocation |
+           | via Agent Skills     |
+           +----------+-----------+
+                      |
+          +-----------+------------+
+          |                        |
+          v                        v
+     +---------+             +---------+
+     |  Done   |             |  Logs   |
+     | Results |             | History |
+     +---------+             +---------+
 
-\# Architecture Diagram
-
-
-
-```
-
-&nbsp;          +--------------------+
-
-&nbsp;          |        Inbox       |
-
-&nbsp;          | (Incoming Tasks)   |
-
-&nbsp;          +---------+----------+
-
-&nbsp;                    |
-
-&nbsp;                    v
-
-&nbsp;            +---------------+
-
-&nbsp;            |  sentinel.py  |
-
-&nbsp;            | File Watcher  |
-
-&nbsp;            +-------+-------+
-
-&nbsp;                    |
-
-&nbsp;                    v
-
-&nbsp;          +--------------------+
-
-&nbsp;          |    Needs\_Action    |
-
-&nbsp;          |  Tasks to Process  |
-
-&nbsp;          +---------+----------+
-
-&nbsp;                    |
-
-&nbsp;                    v
-
-&nbsp;          +----------------------+
-
-&nbsp;          | Claude AI Invocation |
-
-&nbsp;          | via Agent Skills     |
-
-&nbsp;          +----------+-----------+
-
-&nbsp;                     |
-
-&nbsp;         +-----------+------------+
-
-&nbsp;         |                        |
-
-&nbsp;         v                        v
-
-&nbsp;    +---------+             +---------+
-
-&nbsp;    |  Done   |             |  Logs   |
-
-&nbsp;    | Results |             | History |
-
-&nbsp;    +---------+             +---------+
-
-
-
-&nbsp;               |
-
-&nbsp;               v
-
-&nbsp;          +------------+
-
-&nbsp;          | Dashboard  |
-
-&nbsp;          | System KPI |
-
-&nbsp;          +------------+
-
-```
-
-
-
----
+                |
+                v
+           +------------+
+           | Dashboard  |
+           | System KPI |
+           +------------+
 
 
 
@@ -350,7 +302,7 @@ My\_AI\_FTE
 
 └ Bronze\_Completion.md
 
-&nbsp; AI generated completion report
+ AI generated completion report
 
 ```
 
